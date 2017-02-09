@@ -1,6 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { downgradeComponent } from '@angular/upgrade/static';
-declare var angular: any;
 
 @Component({
   selector: 'ng2-clicker',
@@ -22,10 +20,3 @@ export class ClickerComponent {
     this.clicked.emit(this.name);
   }
 }
-
-angular.module('ng1App')
-  .directive('ng2Clicker', downgradeComponent({
-    component: ClickerComponent,
-    inputs: ['name'],
-    outputs: ['clicked']
-  }) as angular.IDirectiveFactory);
