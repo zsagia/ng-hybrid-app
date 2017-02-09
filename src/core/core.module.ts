@@ -9,6 +9,6 @@ import { ClickerComponent } from './clicker/clicker.component';
   declarations: [ ClickerComponent ],
   entryComponents: [ ClickerComponent ]
 })
-export class AppModule {
+export class CoreComponentsModule {
   ngDoBootstrap() {}
 }
