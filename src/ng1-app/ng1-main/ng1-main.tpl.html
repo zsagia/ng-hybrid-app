@@ -8,7 +8,8 @@
       <p>Here's an Angular (ng2) Component:</p>
     </div>
     <div class="col-md-9">
-
+      <ng2-clicker [name]="$ctrl.name"
+                   (clicked)="$ctrl.onClick($event)"></ng2-clicker>
     </div>
   </div>
 </div>
