@@ -1,11 +1,11 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent }  from './app.component';
+import { UpgradeModule } from '@angular/upgrade/static';
 
 @NgModule({
-  imports:      [ BrowserModule ],
-  declarations: [ AppComponent ],
-  bootstrap:    [ AppComponent ]
+  imports:      [ BrowserModule, UpgradeModule ],
+  declarations: [ ]
 })
-export class AppModule { }
+export class AppModule {
+  ngDoBootstrap() {}
+}
