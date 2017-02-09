@@ -3,17 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { UpgradeModule, downgradeComponent } from '@angular/upgrade/static';
 
 import { CoreComponentsModule } from '../core/core.module';
-
 import { ClickerComponent } from '../core/clicker/clicker.component';
 
-declare var angular: any;
+import { runDowngrade } from './downgradeComponents';
 
-angular.module('ng1App')
-  .directive('ng2Clicker', downgradeComponent({
-    component: ClickerComponent,
-    inputs: ['name'],
-    outputs: ['clicked']
-  }) as angular.IDirectiveFactory);
+runDowngrade();
 
 @NgModule({
   imports: [ BrowserModule, UpgradeModule, CoreComponentsModule ],
