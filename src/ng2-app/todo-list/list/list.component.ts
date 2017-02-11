@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { Todo } from '../todo/todo';
 
 @Component({
   selector: 'todo-list',
   template: `
+    <h3>Todos Completed: {{completedTodos.length}} / {{todoList.length}}</h3>
     <ul>
       <li *ngFor="let todo of todoList">
         <todo [todo]="todo" (removeTodo)="removeTodo($event)" (toggleDone)="toggleDone($event)"></todo>
@@ -14,6 +15,7 @@ import { Todo } from '../todo/todo';
 })
 export class TodoListComponent {
   todoList: Array<Todo>;
+  public completedTodos = new Array<Todo>();
 
   ngOnInit () {
     this.todoList = [
@@ -21,6 +23,10 @@ export class TodoListComponent {
       { id: 2, contents: 'buy milk', completed: false },
       { id: 3, contents: 'walk the dog', completed: true }
     ];
+  }
+
+  ngDoCheck () {
+    this.completedTodos = this.todoList.filter(t => t.completed === true);
   }
 
   addTodo (todo: Todo) {
