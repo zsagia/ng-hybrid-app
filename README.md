@@ -3,6 +3,7 @@
 Run with
 
 ```
+npm install
 npm start
 ```
 
