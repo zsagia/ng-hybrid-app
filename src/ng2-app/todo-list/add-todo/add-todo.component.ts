@@ -17,14 +17,19 @@ export class AddTodoComponent {
   public todo: Todo;
 
   ngOnInit () {
+    this.resetInput();
+  }
+
+  onAdd (todo: Todo) {
+    this.addTodo.emit(todo);
+    this.resetInput();
+  }
+
+  private resetInput () {
     this.todo = {
       id: 0, // Replaced with real id when added to list
       contents: '',
       completed: false
     };
-  }
-
-  onAdd (todo: Todo) {
-    this.addTodo.emit(todo);
   }
 }

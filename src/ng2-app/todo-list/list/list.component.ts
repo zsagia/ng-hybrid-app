@@ -31,7 +31,6 @@ export class TodoListComponent {
 
   addTodo (todo: Todo) {
     let newTodo = Object.assign({}, todo, { id: this.getMaxId(this.todoList) + 1 });
-    console.log(newTodo)
     this.todoList = this.todoList.concat(newTodo);
   }
 
@@ -50,6 +49,7 @@ export class TodoListComponent {
   }
 
   private getMaxId (todos: Array<Todo>) : number {
+    if (todos.length === 0) return 0;
     return todos.reduce((prev, curr) => {
         return prev.id > curr.id ? prev : curr;
     }).id;
