@@ -5,9 +5,9 @@ angular.module('ng1App', ['ui.router'])
         url: '/',
         component: 'ng1Main'
       })
-      .state('full', {
-        url: '/full',
-        component: 'fullNg2Page'
+      .state('todoPage', {
+        url: '/todo',
+        component: 'todoPage'
       });
 
     $urlRouterProvider.otherwise('/');
