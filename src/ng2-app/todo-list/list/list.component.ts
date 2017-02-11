@@ -9,6 +9,7 @@ import { Todo } from '../todo/todo';
         <todo [todo]="todo" (removeTodo)="removeTodo($event)" (toggleDone)="toggleDone($event)"></todo>
       </li>
     </ul>
+    <add-todo (addTodo)="addTodo($event)"></add-todo>
   ` 
 })
 export class TodoListComponent {
@@ -20,6 +21,12 @@ export class TodoListComponent {
       { id: 2, contents: 'buy milk', completed: false },
       { id: 3, contents: 'walk the dog', completed: true }
     ];
+  }
+
+  addTodo (todo: Todo) {
+    let newTodo = Object.assign({}, todo, { id: this.getMaxId(this.todoList) + 1 });
+    console.log(newTodo)
+    this.todoList = this.todoList.concat(newTodo);
   }
 
   removeTodo (id: number) {
@@ -34,5 +41,11 @@ export class TodoListComponent {
       }
       return t;
     });
+  }
+
+  private getMaxId (todos: Array<Todo>) : number {
+    return todos.reduce((prev, curr) => {
+        return prev.id > curr.id ? prev : curr;
+    }).id;
   }
 }
